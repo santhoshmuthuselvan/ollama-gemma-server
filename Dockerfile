@@ -31,14 +31,12 @@ COPY start.sh .
 # Make start script executable
 RUN chmod +x start.sh
 
-# Environment variables for Ollama
+# Environment variables
+ENV PORT=8080
 ENV OLLAMA_HOST=0.0.0.0
 
-# Pull model during build (requires starting server temporarily)
-RUN ollama serve & sleep 5 && ollama pull gemma:2b && pkill ollama
-
 # Expose the API port
-EXPOSE 10000
+EXPOSE 8080
 
 # Start command
 CMD ["./start.sh"]

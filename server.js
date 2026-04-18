@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import 'dotenv/config';
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 8080;
 const MODEL_NAME = process.env.MODEL_NAME || 'gemma:2b';
 const OLLAMA_API = process.env.OLLAMA_URL || 'http://localhost:11434/api/generate';
 
