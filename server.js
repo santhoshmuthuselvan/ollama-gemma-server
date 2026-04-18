@@ -1,9 +1,11 @@
 import express from 'express';
 import fetch from 'node-fetch';
+import 'dotenv/config';
 
 const app = express();
-const PORT = 10000;
-const OLLAMA_API = 'http://localhost:11434/api/generate';
+const PORT = process.env.PORT || 10000;
+const MODEL_NAME = process.env.MODEL_NAME || 'gemma:2b';
+const OLLAMA_API = process.env.OLLAMA_URL || 'http://localhost:11434/api/generate';
 
 app.use(express.json());
 
@@ -29,7 +31,7 @@ app.post('/generate', async (req, res) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gemma:2b',
+        model: MODEL_NAME,
         prompt: prompt,
         stream: false,
       }),

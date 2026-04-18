@@ -12,9 +12,12 @@ done
 
 echo "Ollama is ready."
 
+# Determine model name (default to gemma:2b if not set)
+MODEL_NAME=${MODEL_NAME:-"gemma:2b"}
+
 # Ensure the model is available (in case build-time pull failed)
-echo "Checking for gemma:2b model..."
-ollama pull gemma:2b
+echo "Checking for $MODEL_NAME model..."
+ollama pull $MODEL_NAME
 
 # Start the Node.js application
 echo "Starting Express server..."
